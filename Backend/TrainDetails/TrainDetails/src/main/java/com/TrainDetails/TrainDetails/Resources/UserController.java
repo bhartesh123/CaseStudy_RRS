@@ -1,7 +1,7 @@
 package com.TrainDetails.TrainDetails.Resources;
 
 import com.TrainDetails.TrainDetails.Repository.TrainRepository;
-import com.TrainDetails.TrainDetails.model.Train;
+import com.TrainDetails.TrainDetails.Entity.Train;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

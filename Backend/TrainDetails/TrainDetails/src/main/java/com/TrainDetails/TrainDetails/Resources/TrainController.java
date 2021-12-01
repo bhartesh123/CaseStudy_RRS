@@ -1,11 +1,12 @@
 package com.TrainDetails.TrainDetails.Resources;
 
 import com.TrainDetails.TrainDetails.Repository.TrainRepository;
-import com.TrainDetails.TrainDetails.model.Train;
+import com.TrainDetails.TrainDetails.Entity.Train;
+import com.TrainDetails.TrainDetails.Services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.OpAnd;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -14,14 +15,24 @@ import java.util.Optional;
 public class TrainController {
     @Autowired
     private TrainRepository trainRepository;
+    @Autowired
+    private BookingService bookingService;
     @PostMapping("/addTrain")
     public String addTrain(@RequestBody Train trainId){
         trainRepository.save(trainId);
-        return "New Train added with ID : "+trainId.getTrainName();
+        return "New Train added with Name : "+trainId.getTrainName()+" and TrainID is : "+trainId.getTrainId();
     }
-    @GetMapping("/{trainId}")
+    @GetMapping("/search/{trainId}")
     public Optional<Train> getTrain(@PathVariable String trainId){
         return trainRepository.findById(trainId);
+    }
+    @GetMapping("/booking/{trainId}")
+    public List<Train> getTrainByBookingId(@PathVariable("trainId") String trainId){
+        return this.bookingService.getTrain(trainId);
+    }
+    @GetMapping("/all")
+    public List<Train> getAllTrains(){
+        return trainRepository.findAll();
     }
     @GetMapping("/delete/{trainId}")
     public String deleteTrain(@PathVariable String trainId){
