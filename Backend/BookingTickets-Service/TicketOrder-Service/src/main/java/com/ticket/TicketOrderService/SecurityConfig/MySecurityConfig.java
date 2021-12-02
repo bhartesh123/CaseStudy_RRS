@@ -1,4 +1,4 @@
-package com.ticket.TicketOrderService.SecurityConfig;
+/*package com.ticket.TicketOrderService.SecurityConfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,13 +19,13 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            //    .csrf().disable()//this is for non-browser
+                .csrf().disable()//this is for non-browser
                 //.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())//Here in this csrf token will be stored in cookies
                // .and()
                 .authorizeRequests()
                 //THis permits only following url's "/home" and "/users"
                 .antMatchers("/booking/booked/").hasRole("USER")
-                .antMatchers("/booking/addBooking","/booking/update/","/booking/del/").hasRole("ADMIN")
+                .antMatchers("/booking/**").hasRole("ADMIN")
 
                 //.antMatchers("/abc").permitAll()
                 .anyRequest()
@@ -50,4 +50,4 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder(10);
     }
 }
-
+*/
