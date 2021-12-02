@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: Train-order-service
+    name: booking-train-service
 
 eureka:
   client:

@@ -1,0 +1,61 @@
+server:
+  port: 1008
+
+eureka:
+  instance:
+    hostname: localhost
+
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: admin-contact-service
+          uri: lb://admin-contact-service
+          predicates:
+            - Path=/contacts/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: admin-contact-service
+                fallbackuri: forward:/AdminContactServiceFallback
+
+
+        - id: booking-train-service
+          uri: lb://booking-train-service
+          predicates:
+            - Path=/booking/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: booking-train-service
+                fallbackuri: forward:/BookingTicketServiceFallback
+
+        - id: train-service
+          uri: lb://train-service
+          predicates:
+            - Path=/trains/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: train-service
+                fallbackuri: forward:/TrainDetailsServiceFallback
+
+
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillieseconds: 5000
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
