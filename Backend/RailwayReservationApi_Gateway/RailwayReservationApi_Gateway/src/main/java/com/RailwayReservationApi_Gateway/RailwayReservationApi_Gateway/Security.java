@@ -11,14 +11,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class Security extends WebSecurityConfigurerAdapter {
+public class Security extends  WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        //super.configure(http);
+     
         http
                 .authorizeRequests()
-             //   .antMatchers("/trains/**","/contacts/**").hasRole("ADMIN")
-              //  .antMatchers("/search/**","/booking/**").permitAll()
+                .antMatchers("/trains/**","/contacts/**").hasRole("ADMIN")
+                .antMatchers("/search/**","/booking/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -28,8 +28,8 @@ public class Security extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //super.configure(auth);
-        auth.inMemoryAuthentication().withUser("Bhartesh").password("bhartesh19").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("Siddu").password("sid19").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("Bhartesh").password(this.passwordEncoder().encode("Bhartesh19")).roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("Siddu").password(this.passwordEncoder().encode("sid19")).roles("USER");
     }
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder(10);

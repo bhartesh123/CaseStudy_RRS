@@ -36,7 +36,7 @@ spring:
         - id: train-service
           uri: lb://train-service
           predicates:
-            - Path=/trains/**, /search/**
+            - Path=/trains/** , /search/**
           filters:
             - name: CircuitBreaker
               args:
@@ -44,3 +44,18 @@ spring:
                 fallbackuri: forward:/TrainDetailsServiceFallback
 
 
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillieseconds: 5000
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream

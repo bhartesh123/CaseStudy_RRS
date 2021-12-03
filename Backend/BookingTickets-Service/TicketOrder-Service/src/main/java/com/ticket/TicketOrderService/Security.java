@@ -1,4 +1,4 @@
-/*package com.ticket.TicketOrderService;
+package com.ticket.TicketOrderService;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,4 +37,3 @@ public class Security extends WebSecurityConfigurerAdapter{
 	        return new BCryptPasswordEncoder(15);
 	    }
 }
-*/
