@@ -1,4 +1,4 @@
-package com.RailwayReservationApi_Gateway.RailwayReservationApi_Gateway.Security;
+package com.RailwayReservationApi_Gateway.RailwayReservationApi_Gateway;
 
 import org.springframework.context.annotation.Configuration;
 
