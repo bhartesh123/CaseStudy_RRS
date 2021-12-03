@@ -34,7 +34,7 @@ public class TicketOrderController {
 	@PostMapping("/addBooking")
 	public String saveBook(@RequestBody BookingTicket ticket) {
 	ticketrepository.save(ticket);
-	return "Booked ticket with id :  " + ticket.getId()+"And Train ID is "+ticket.getTrainId();
+	return "Booked ticket with id :  " + ticket.getId()+"  And Train ID is "+ticket.getTrainId();
     }
 
 
@@ -45,7 +45,7 @@ public class TicketOrderController {
 		BookingTicket bookingTicket=this.bookingService.getBooking(trainId);
 		//System.out.println(bookingTicket.getTrainId());
 		//http://localhost:9030/trains/all
-		List booking=this.restTemplate.getForObject("http://train-service/trains/booking/"+trainId, List.class);
+		List booking=this.restTemplate.getForObject("http://train-service/search/booking/"+trainId, List.class);
 		bookingTicket.setTrains(booking);
 		return bookingTicket;
 	}
