@@ -17,18 +17,19 @@ public class Security extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http)throws Exception{
 		http
+	//	.csrf().disable()
 		.authorizeRequests()
-		.antMatchers(HttpMethod.GET,"/booking/**").hasRole("ADMIN")
+				.antMatchers("/booking/booked/").permitAll()
+		.antMatchers("/booking/addBooking/","/booking/update/","/booking/del/").hasRole("ADMIN")
 		.anyRequest()
 		.authenticated()
 		.and()
 		.httpBasic();
-		
 	}
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth)throws Exception {
 		auth.inMemoryAuthentication().withUser("Bhartesh").password(this.pass().encode("Bhartesh19")).roles("ADMIN");
-		auth.inMemoryAuthentication().withUser("Titiksha").password(this.pass().encode("Titu14")).roles("USER");
+		auth.inMemoryAuthentication().withUser("Siddu").password(this.pass().encode("sid14")).roles("USER");
 		//auth.inMemoryAuthentication().withUser("Titiksha").password("Titu14").roles("USER");
 	}
 	 @Bean
