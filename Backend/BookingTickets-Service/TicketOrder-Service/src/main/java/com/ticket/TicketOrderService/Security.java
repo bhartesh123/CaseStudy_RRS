@@ -17,7 +17,8 @@ public class Security extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http)throws Exception{
 		http
-	//	.csrf().disable()
+		.csrf().disable()
+				.formLogin().disable()
 		.authorizeRequests()
 				.antMatchers("/booking/booked/").permitAll()
 		.antMatchers("/booking/addBooking/","/booking/update/","/booking/del/").hasRole("ADMIN")

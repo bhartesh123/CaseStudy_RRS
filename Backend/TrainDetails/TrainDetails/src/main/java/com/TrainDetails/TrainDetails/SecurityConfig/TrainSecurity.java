@@ -15,6 +15,8 @@ public class TrainSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
+                .formLogin().disable()
                 .authorizeRequests()
                 .antMatchers("/search/**").permitAll()
                 .antMatchers("/trains/**").hasRole("ADMIN")

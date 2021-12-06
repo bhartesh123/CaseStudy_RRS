@@ -40,7 +40,7 @@ public class TrainController {
         return "Train with ID "+trainId+" is Deleted";
     }
 
-    @GetMapping("/update/{trainId}")
+    @PutMapping("/update/{trainId}")
     public Train updateTrain(@PathVariable("trainId") String trainId,@RequestBody Train t){
         t.setTrainId(trainId);
         trainRepository.save(t);
