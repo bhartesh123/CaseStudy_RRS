@@ -1,4 +1,4 @@
-package com.TrainDetails.TrainDetails.Resources;
+package com.TrainDetails.TrainDetails.Controller;
 
 import com.TrainDetails.TrainDetails.Repository.TrainRepository;
 import com.TrainDetails.TrainDetails.Entity.Train;
@@ -40,7 +40,7 @@ public class TrainController {
         return "Train with ID "+trainId+" is Deleted";
     }
 
-    @PutMapping("/update/{trainId}")
+    @GetMapping("/update/{trainId}")
     public Train updateTrain(@PathVariable("trainId") String trainId,@RequestBody Train t){
         t.setTrainId(trainId);
         trainRepository.save(t);

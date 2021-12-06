@@ -1,4 +1,4 @@
-package com.TrainDetails.TrainDetails.Resources;
+package com.TrainDetails.TrainDetails.Controller;
 
 import com.TrainDetails.TrainDetails.Repository.TrainRepository;
 import com.TrainDetails.TrainDetails.Entity.Train;
