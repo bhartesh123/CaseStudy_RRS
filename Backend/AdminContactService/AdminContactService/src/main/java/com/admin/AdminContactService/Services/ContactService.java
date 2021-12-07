@@ -1,4 +1,4 @@
-/*package com.admin.AdminContactService.Services;
+package com.admin.AdminContactService.Services;
 
 import com.admin.AdminContactService.Repository.ContactRepository;
 import com.admin.AdminContactService.model.Contact;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ContactService {
+public class    ContactService {
     @Autowired
     private ContactRepository contactRepository;
     public Contact addContact(Contact contact){
@@ -32,4 +32,3 @@ public class ContactService {
         contactRepository.delete(contact);
     }
 }
-*/

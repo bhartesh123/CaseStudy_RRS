@@ -17,7 +17,7 @@ public class TrainService implements BookingService{
     public Train addTrain(Train train){
         return trainRepository.save(train);
     }
-    public List<Train> getContact(){
+    public List<Train> getTrain(){
 
         List<Train> train=trainRepository.findAll();
         System.out.println("Getting Trains from DataBase "+train );
