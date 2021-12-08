@@ -17,18 +17,24 @@ public class BookingTicket {
 	private String startStation;
 	private String endStation;
 	List<Train> trains=new ArrayList<>();
+	public BookingTicket(String id, String trainId, String seats, String startStation, String endStation) {
+		//super();
+		this.id = id;
+		this.trainId = trainId;
+		this.seats = seats;
+		this.startStation = startStation;
+		this.endStation = endStation;
+	}
+
 	public BookingTicket() {
 		
 	}
 
-	public List<Train> getTrains() {
-		return trains;
-	}
-
-	public void setTrains(List<Train> trains) {
-		this.trains = trains;
-	}
-
+	
+	  public List<Train> getTrains() { return trains; }
+	  
+	  public void setTrains(List<Train> trains) { this.trains = trains; }
+	 
 	public String getTrainId() {
 		return trainId;
 	}
@@ -36,15 +42,16 @@ public class BookingTicket {
 	public void setTrainId(String trainId) {
 		this.trainId = trainId;
 	}
-
-	public BookingTicket(String id, String seats, String trainId, String startStation, String endStation, List<Train> trains) {
-		this.id = id;
-		this.seats = seats;
-		this.trainId=trainId;
-		this.startStation = startStation;
-		this.endStation = endStation;
-		this.trains=trains;
-	}
+	
+	  public BookingTicket(String id, String seats, String trainId, String startStation, String endStation, List<Train> trains) { 
+		  this.id = id;
+		  this.seats = seats; 
+		  this.trainId=trainId; 
+		  this.startStation = startStation;
+		  this.endStation = endStation; 
+		  this.trains=trains; 
+	  }
+	 
 
 
 

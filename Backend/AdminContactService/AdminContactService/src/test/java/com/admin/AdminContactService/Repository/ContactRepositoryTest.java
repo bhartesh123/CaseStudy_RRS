@@ -42,8 +42,5 @@ class ContactRepositoryTest {
         Contact contact = new Contact("999", "Glenn", "9864321894");
         when(contactRepository.save(contact)).thenReturn(contact);
         assertEquals(contact, contactService.addContact(contact));
-
     }
-
-
 }

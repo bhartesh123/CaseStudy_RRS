@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class    ContactService {
+public class ContactService {
     @Autowired
     private ContactRepository contactRepository;
     public Contact addContact(Contact contact){
