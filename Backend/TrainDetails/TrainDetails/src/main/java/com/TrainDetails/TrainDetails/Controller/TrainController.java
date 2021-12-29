@@ -30,7 +30,7 @@ public class TrainController {
     public List<Train> getTrainByBookingId(@PathVariable("trainId") String trainId){
         return this.bookingService.getTrain(trainId);
     }
-    @GetMapping("/all")
+    @GetMapping("/allTrain")
     public List<Train> getAllTrains(){
         return trainRepository.findAll();
     }

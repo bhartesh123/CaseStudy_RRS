@@ -11,6 +11,7 @@ import com.ticket.TicketOrderService.Service.BookingService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-//@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/booking")
 public class TicketOrderController {
 
@@ -35,7 +36,7 @@ public class TicketOrderController {
 	private final static String BOOKING_SERVICE="booking-service";
 
 	@PostMapping("/addBooking")
-	@CircuitBreaker(name = "BOOKING_SERVICE", fallbackMethod = "addBookingFallBack")
+	//@CircuitBreaker(name = "BOOKING_SERVICE", fallbackMethod = "addBookingFallBack")
 	public String saveBook(@RequestBody BookingTicket ticket) {
 		ticketrepository.save(ticket);
 		return "Booked ticket with id :  " + ticket.getId()+"  And Train ID is "+ticket.getTrainId();
@@ -47,7 +48,7 @@ public class TicketOrderController {
 
 
 	@RequestMapping("/booked/{trainId}")
-	@CircuitBreaker(name = "BOOKING_SERVICE", fallbackMethod = "getBookingFallBack")
+	//@CircuitBreaker(name = "BOOKING_SERVICE", fallbackMethod = "getBookingFallBack")
 	public BookingTicket getBooking(@PathVariable("trainId") String trainId){
 		BookingTicket bookingTicket=this.bookingService.getBooking(trainId);
 		//System.out.println(bookingTicket.getTrainId());

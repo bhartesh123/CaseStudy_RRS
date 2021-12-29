@@ -12,11 +12,11 @@ public class AuthenticationResponse {
 		this.response=response;
 	}
 	
-	public String getResponse() {
+	public String gettoken() {
 		return response;
 	}
 
-	public void setResponse(String response) {
+	public void settoken(String response) {
 		this.response = response;
 	}
 	

@@ -1,0 +1,38 @@
+
+/* * {
+  box-sizing: border-box;
+} */
+.option:hover{
+  background-color: brown;
+}
+/* select.decorated option:hover {
+  box-shadow: 0 0 10px 100px #1882A8 inset;
+} */
+.column {
+  float: left;
+  width: 110px;
+  padding: 1px;
+  padding-left: 10px;
+  padding-top: 20px;
+  background-color: coral;
+}
+.column1 {
+    float: left;
+    width: 110px;
+    padding: 1px;
+    
+  }
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* .footer{
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  left: 0px;
+
+} */

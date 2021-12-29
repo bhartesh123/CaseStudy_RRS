@@ -4,10 +4,23 @@ public class AuthenticationRequest {
 
 	private String username;
 	private String password;
+	private String mobileNumber;
 
-	public AuthenticationRequest(String username, String password) {
+	public AuthenticationRequest(String username, String password,String mobileNumber) {
 		this.username = username;
 		this.password = password;
+		this.mobileNumber=mobileNumber;
+	}
+
+//	public String getMobileNumber1() {
+//		return mobileNumber;
+//	}
+	public String getMobileNumber() {
+		// TODO Auto-generated method stub
+		return mobileNumber;
+	}
+	public void setMobileNumber(String mobileNumber) {
+		this.mobileNumber = mobileNumber;
 	}
 
 	public AuthenticationRequest() {
@@ -37,4 +50,6 @@ public class AuthenticationRequest {
 				", password='" + password + '\'' +
 				'}';
 	}
+
+	
 }

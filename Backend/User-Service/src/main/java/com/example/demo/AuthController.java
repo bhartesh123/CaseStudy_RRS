@@ -35,7 +35,7 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtutil;
 	
-	@PostMapping("/token")
+	@PostMapping("/subs")
 	private ResponseEntity<AuthenticationResponse>subscribeClient(@RequestBody AuthenticationRequest authreq){
 		UserModel usermodel =new UserModel();
 		System.out.println(authreq);
@@ -55,6 +55,7 @@ public class AuthController {
 		
 		usermodel.setUsername(authreq.getUsername());
 		usermodel.setPassword(authreq.getPassword());
+		usermodel.setMobileNumber(authreq.getMobileNumber());
 		
 		
 		try {
@@ -75,6 +76,7 @@ public class AuthController {
 	private ResponseEntity<?> authenticateClient(@RequestBody AuthenticationRequest authreq){
 		String username=authreq.getUsername();
 		String password= authreq.getPassword();
+		System.out.println(authreq);
 		try {
 			authenticates.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 				
