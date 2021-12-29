@@ -56,6 +56,7 @@ public class AuthController {
 		usermodel.setUsername(authreq.getUsername());
 		usermodel.setPassword(authreq.getPassword());
 		usermodel.setMobileNumber(authreq.getMobileNumber());
+		usermodel.setEmail(authreq.getEmail());
 		
 		
 		try {
@@ -74,18 +75,15 @@ public class AuthController {
 	
 	@PostMapping("/auth")
 	private ResponseEntity<?> authenticateClient(@RequestBody AuthenticationRequest authreq){
-		String username=authreq.getUsername();
+		String email=authreq.getEmail();
 		String password= authreq.getPassword();
 		System.out.println(authreq);
-		try {
-			authenticates.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-				
-		}
-		catch(Exception e) {
-			return ResponseEntity.ok(new AuthenticationResponse(" Invalid Credentials..!"));
-		}
 		
-		UserDetails userdetails= userservice.loadUserByUsername(username);
+			authenticates.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+				
+		
+		
+		UserDetails userdetails= userservice.loadUserByUsername(email);
 		
 		String jwt = jwtutil.generateToken(userdetails);
 		

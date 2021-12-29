@@ -20,7 +20,7 @@ import PaytmPG from './components/PaytmPG';
 import SBIBankPG from './components/SBIBank';
 import ThankYouMessage from './components/ThankYouMessage';
 import Login from './components/Login';
-import Logout from './components/logout';
+import Logout from './components/logout'
 import {reducer, initialState} from '../src/reducer.js/UseReducer'
 import NavBar from './components/NavBar';
 
@@ -92,18 +92,26 @@ const App=()=> {
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       
       {/* LogIn Button */}
-        <div className="collapse navbar-collapse">
+      <div className="collapse navbar-collapse">
         <ul className= "navbar-nav mr-auto">
           <li className= "navbar-item">
           <li className= "navbar-item">
                 <Link to="/" className="Link" style={{ color: "white" }} onClick={Logout}>
-                  <img src='https://cdn-icons.flaticon.com/png/128/1039/premium/1039183.png?token=exp=1640709095~hmac=081b5e5632213043ea32a7802e942eef' style={{height:50}}/>
+                  <img src='https://cdn-icons.flaticon.com/png/128/3541/premium/3541911.png?token=exp=1640764761~hmac=9af56ce0ed658fa6a58369f114977a9d' style={{height:50}}/>
                 </Link>
               </li>
           </li>
         </ul>
       </div>
-      
+      <div className="collapse navbar-collapse">
+        <ul className= "navbar-nav mr-auto">
+          <li className= "navbar-item">
+            <Link to="/login" className="nav-link" style={{ color: "white" }}>
+              <img src='https://cdn-icons.flaticon.com/png/128/3293/premium/3293473.png?token=exp=1640764653~hmac=cd4f78d16a7fd0e91c1e50c7f94749bf' style={{height:50}}/>
+            </Link>
+          </li>
+        </ul>
+      </div>
      
       </nav>
       )
@@ -169,7 +177,7 @@ const App=()=> {
         <ul className= "navbar-nav mr-auto">
           <li className= "navbar-item">
             <Link to="/login" className="nav-link" style={{ color: "white" }}>
-              <img src='https://cdn-icons.flaticon.com/png/128/3293/premium/3293473.png?token=exp=1640690016~hmac=ccf58912aa206dd528b7a89d41368969' style={{height:50}}/>
+              <img src='https://cdn-icons.flaticon.com/png/128/3293/premium/3293473.png?token=exp=1640764653~hmac=cd4f78d16a7fd0e91c1e50c7f94749bf' style={{height:50}}/>
             </Link>
           </li>
         </ul>

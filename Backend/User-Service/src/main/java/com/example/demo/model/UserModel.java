@@ -7,9 +7,12 @@ public class UserModel {
 	
 	@Id
 	private String Id;
-	
-	
-	private String username;
+
+	private String email;
+
+
+
+	 private String username;
 	private String password;
 	private String mobileNumber;
 	public UserModel() {
@@ -39,7 +42,13 @@ public class UserModel {
 	public String getId() {
 		return Id;
 	}
-	
+	 public String getEmail() {
+		 return email;
+	 }
+
+	 public void setEmail(String email) {
+		 this.email = email;
+	 }
 	
 }
  

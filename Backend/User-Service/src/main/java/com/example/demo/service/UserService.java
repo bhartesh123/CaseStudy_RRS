@@ -19,14 +19,14 @@ public class UserService implements UserDetailsService{
 	UserRepository userrepo;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserModel foundedUser=userrepo.findByusername(username);
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		UserModel foundedUser=userrepo.findByemail(email);
 		if (foundedUser==null) {
 			return null;
 		}
-		String user=foundedUser.getUsername();
+		String email1=foundedUser.getEmail();
 		String pass=foundedUser.getPassword();
-		return new User(user, pass,new ArrayList<>());
+		return new User(email1, pass,new ArrayList<>());
 	}
 
 }

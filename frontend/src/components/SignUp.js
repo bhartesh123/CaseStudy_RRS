@@ -11,23 +11,24 @@ class SignUp extends Component {
              password:'',
              mobileNumber:'',
              gender:'',
-         
+             email:'',
              usernameError:'',
              passwordError:'',
              mobileNumberError:'',
              genderError:'',
+             emailError:'',
              isProfile: false
         }
         this.register=this.register.bind(this)
         this.handleChange=this.handleChange.bind(this)
     }
     valid(){
-        if(this.state.username.length<4 && this.state.password.length<6 && this.state.mobileNumber.length<10 ) {
+        if(this.state.username.length<4 && this.state.password.length<6 && this.state.mobileNumber.length<10 && this.state.email.length<11 ) {
             this.setState({
                 usernameError:"Invalid UserName",
                 passwordError:"Invalid Password", 
-                mobileNumberError:"Invalid Mobile Number"
-
+                mobileNumberError:"Invalid Mobile Number",
+                emailError:"Invalid Email Address"
             })
         }
         else if(this.state.username.length<4){
@@ -44,6 +45,10 @@ class SignUp extends Component {
                 mobileNumberError:"Invalid Mobile Number"
             })
         }
+        else if(this.state.email.length<10){
+          this.setState({
+              emailError:"Invalid Email Address"})
+      }
         else{
             return true
         }
@@ -52,7 +57,8 @@ class SignUp extends Component {
         this.setState({
             usernameError:"",
             passwordError:"",
-            mobileNumberError:""
+            mobileNumberError:"",
+            emailError:""
 
         })
         e.preventDefault()
@@ -69,6 +75,7 @@ class SignUp extends Component {
                     username: this.state.username,
                     password:this.state.password,
                     mobileNumber: this.state.mobileNumber,
+                    email:this.state.email,
                     gender: this.state.gender
                 })
             })
@@ -118,7 +125,7 @@ class SignUp extends Component {
 
                 <div className="form-outline mb-4">
                 <label className="form-label" for="form3Example3cg" style={{ fontFamily: "Harlow Solid Italic"}}><strong>Your Email</strong></label>
-                  <input type="email" id="form3Example3cg" className="form-control form-control-lg" placeholder='Enter your Email Id'/>
+                  <input type="email" id="form3Example3cg" className="form-control form-control-lg" placeholder='Enter your Email Id' onChange={(e)=>this.handleChange({email: e.target.value})}/>
                   
                 </div>
 

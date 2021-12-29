@@ -9,11 +9,11 @@ import {UserContext} from '../App'
 
 const LoginSchema=Yup.object().shape({
     password: Yup.string().required("Password is required..!"),
-    username: Yup.string().required("UserName is required..!")
+    email: Yup.string().required("Email is required..!")
 })
 const Login=()=>{
     const {state,dispatch} = useContext(UserContext)
-    const [username, serUsername]= useState('')
+    const [email, serUsername]= useState('')
     const [password, setPassword]=useState('')
     const history=useHistory();
     const location=useLocation();
@@ -37,7 +37,7 @@ const Login=()=>{
                     "Access-Control-Allow-Origin":"*"
                 },
                 "body": JSON.stringify({
-                    username: userData.username,
+                    email: userData.email,
                     password: userData.password                   
                 })
         })
@@ -49,7 +49,7 @@ const Login=()=>{
             else{
                 const userData={
                     token: response,
-                    name: username
+                    name: email
                     
                 }
                 
@@ -70,7 +70,7 @@ const Login=()=>{
     return (
         <Formik
             initialValues={{
-                username: "",
+                email: "",
                 password: ""
             }}
             validationSchema={LoginSchema}
@@ -102,14 +102,14 @@ const Login=()=>{
                                 <br/>
 
             <div className="form-outline mb-4">
-            <label className="form-label" for="typeEmailX-2">UserName</label>  
-              <Field type="text" name="username" id="typeEmailX-2" className="form-control form-control-lg" placeholder="Enter user name" />
+            {/* <label className="form-label" for="typeEmailX-2">UserName</label>   */}
+              <Field type="email" name="email" className="form-control form-control-lg" placeholder="Enter Email" />
               
             </div>
 
             <div className="form-outline mb-4">
-            <label className="form-label" for="typePasswordX-2">Password</label>
-              <Field type="password" name="password" id="typePasswordX-2" className="form-control form-control-lg" placeholder="Enter password"/>
+            {/* <label className="form-label" for="typePasswordX-2">Password</label> */}
+              <Field type="password" name="password" className="form-control form-control-lg" placeholder="Enter password"/>
               
             </div>
 
@@ -124,12 +124,12 @@ const Login=()=>{
               <label className="form-check-label" for="form1Example3">&nbsp; Remember password </label>
             </div>
 
-            <button className="auth-button block btn btn-primary btn-lg btn-block " onClick={()=>{}} type="submit" style={{width:150}}>Login</button>&nbsp;&nbsp;
-      
+            <button className="auth-button btn btn-success btn-block btn-lg gradient-custom-4 text-body " onClick={()=>{}} type="submit" style={{width:150,}}>Login</button>&nbsp;&nbsp;
+          
             <p className="text-center text-muted mt-5 mb-0">Don't have an account? <Link to="/signUp" className="fw-bold text-body"><u>Register here</u></Link></p>
             <hr className="my-4"/>
 
-            <button className="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style={{backgroundColor: '#dd4b39',width:300, marginBottom:10}} type="submit"><i className="fab fa-google me-2"></i> Sign in with google</button>
+            <button className="  block btn btn-primary btn-lg btn-block" style={{backgroundColor: '#dd4b39',width:300, marginBottom:10}} type="submit"><i className="fab fa-google me-2"></i> Sign in with google</button>
             <br/>
             <button className="btn btn-lg btn-block btn-primary mb-2" style={{backgroundColor: '#3b5998',width:300}} type="submit"><i className="fab fa-facebook-f me-2"></i>Sign in with facebook</button>
 
