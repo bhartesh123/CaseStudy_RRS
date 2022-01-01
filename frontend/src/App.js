@@ -28,6 +28,7 @@ import paytm from './components/paytm';
 import LogInCls from './components/LogInCls';
 import { render } from 'react-dom';
 import deleteTrain from './components/deleteTrain';
+// import { PaytmButton } from './paytm-button/paytmButton';
 
 // export const UserContext=createContext()
 // const image =[
@@ -66,7 +67,7 @@ class App extends Component {
   return (
     
     <Router>
-       
+      
     {/* <RenderMenu/> */}
     
     <NavBar user={this.state.user}/>
@@ -85,6 +86,7 @@ class App extends Component {
         <Route path="/login" exact component={LogInCls}/>
         <Route path="/addTrain" exact component={AddTrain}/>
         <Route path="/delTrain" exact component={deleteTrain}/>
+        <Route path="/paytm" exact component={PaymentMethod}/>
         
       </Switch> 
 
@@ -99,7 +101,7 @@ class App extends Component {
         </center>
       </div> */}
      
-      
+    
       <div className="footer" style={{ 'backgroundImage': `url('https://as1.ftcdn.net/v2/jpg/03/60/98/86/1000_F_360988603_WHuKjgvF4GuqSMtGW2g4X56EYL7Qy5WK.jpg')`, width: 1265, height: 70}}>
         <center>
           {" "}
@@ -110,7 +112,7 @@ class App extends Component {
           <p style={{color:'white',fontFamily: 'Chiller'}}><strong>&copy; {new Date().getFullYear()} Devloped By Bhartesh</strong></p>
         </center>
       </div> 
-      
+     
     </Router>
     
   );

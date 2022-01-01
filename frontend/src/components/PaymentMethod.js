@@ -108,6 +108,7 @@ class PaymentMethod extends Component {
                     <h1>Heyy....!</h1><br/>
                     <h4>Payment page is under Development</h4>
                 </center> */}
+                <br/><br/><br/><br/><br/><br/>
                 <div className='container' style={{marginTop: 0}}>
                     <center>
                         <div className='card' style={{width:600}}>
@@ -179,6 +180,7 @@ class PaymentMethod extends Component {
                         </div>
                     </center>
                 </div>
+                <br/><br/>
             </div>
         )
     }

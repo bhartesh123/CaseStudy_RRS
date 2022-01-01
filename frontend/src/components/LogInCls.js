@@ -18,7 +18,7 @@ export class LogInCls extends Component {
 
         axios.post("auth",data)
         .then(res=>{
-            alert('Your Logged In')
+            // alert('Your Logged In')
             sessionStorage.setItem('token',res.data.token)
             console.log(res)
             this.props.history.push(`/`);
@@ -70,9 +70,19 @@ export class LogInCls extends Component {
                     */}
                 </div>
                 </form>
-                <div className='card-bhar'>
-                    <p>Hii I am Bhartesh</p>
+                <div className='ac'>
+                {/* <div className="col-lg-3 col-md-3 col-sm-6 col-12"> */}
+              <div className='con'>
+                <div className='text-center card_details'>
+                  <h5><strong>Here’s how COVID-19 impacted Indian Railways revenue in FY21, check details</strong></h5>
+                  <p>The Indian Railways’ total traffic revenue decreased by Rs 34,145 crore from the last fiscal year.</p>
+                  <p>Take safety precautions during travelling</p>
+                  <a href="https://www.rail.co.il/en/pages/safety-travel.aspx" 
+                    className="news">Read More</a>
                 </div>
+              </div>
+            </div>
+            {/* </div> */}
             </section>
         )
     }

@@ -54,6 +54,7 @@ class PaytmPG extends Component {
   render() {
     return (
       <div style={{ backgroundColor: "#D3D3D3" }}>
+        <br/><br/><br/><br/><br/><br/>
         <div className="container" style={{ marginTop: 0 }}>
           <center>
             <div className="card" style={{ width: 600 }}>
@@ -112,6 +113,7 @@ class PaytmPG extends Component {
             </div>
           </center>
         </div>
+        <br/><br/>
       </div>
     );
   }

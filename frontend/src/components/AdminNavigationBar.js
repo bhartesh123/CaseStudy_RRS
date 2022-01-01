@@ -5,7 +5,7 @@ import adminProfileIcon from "../../src/resources/user-check.svg";
 import createTrainIcon from "../../src/resources/file-plus.svg";
 import trainListIcon from "../../src/resources/book-open.svg";
 import signOutIcon from "../../src/resources/log-out.svg";
-import Logout from "./logout";
+import Logout from "./adminLogout";
 
 
 export default class AdminNavigationBar extends Component {
@@ -59,7 +59,7 @@ export default class AdminNavigationBar extends Component {
                 {/* <Link to="/" className="nav-link" onClick={Logout}>
                   <img src={signOutIcon} alt="signOutIcon" />
                 </Link> */}
-                <Link to={'/'} className="nav-link" onClick={Logout}><img src={signOutIcon}/></Link>
+                <Link to="/" className="nav-link" onClick={Logout}><img src={signOutIcon}/></Link>
               </li>
             </ul>
           </div>

@@ -133,7 +133,8 @@ class SignUp extends Component {
         <hr style={{color:'purple'}}></hr>
         <center>
         <button type="button" className="btn btn-success btn-block btn-lg gradient-custom-4 text-body" onClick={(e)=>this.register(e)} style={{width:200, fontFamily: "Harlow Solid Italic"}}><strong>Register</strong></button>
-        <p className="text-center text-muted mt-5 mb-0" style={{color: 'black'}}>Have already an account? <Link to="/login" className="fw-bold text-body"><u>Login here</u></Link></p>
+        <br/>   <br/>
+        <p  style={{color: 'white'}}>Have already an account? <Link to="/login" className="fw-bold text-body" ><u  style={{color: 'white'}}>Login here</u></Link></p>
         <br/>
         
         </center>

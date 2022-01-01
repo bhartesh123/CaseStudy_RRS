@@ -1,6 +1,3 @@
-import React, { useContext} from 'react'
-import { Redirect } from 'react-router-dom'
-import {UserContext} from '../App'
 
 const Logout = () => { // export function from module 
     var session=sessionStorage.getItem('token')
@@ -11,8 +8,8 @@ const Logout = () => { // export function from module
         
         //  dispatch({type:"USER", payload:false})
         sessionStorage.clear();
-        // alert("You have been logged Out")
-        window.location.reload()
+        // alert("Admin has been logged Out")
+        // window.location.reload()
        
         
     }

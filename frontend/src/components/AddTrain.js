@@ -85,13 +85,23 @@ class AddTrain extends Component {
                 })
             })
             .then(response=> response.json())
-          
-            .then(msg=>{console.log(msg)
-                this.history.push(`/trainlist`)
+
+            .then(response=>{
+              if(response.error){
+                alert("Train not Added")
+                console.log(response)
+                this.history.push(`/addTrain`)
+              }
+              else{
+                alert("Train added Successfully")
+                this.history.push(`/addTrain`)
+              }
+              
+                
             })
       .catch(error => error.message);
       
-    window.alert("Train created successfully");
+    
     this.setState({
         trainid: "",
         trainName: "",

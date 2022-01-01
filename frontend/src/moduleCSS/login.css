@@ -10,7 +10,14 @@
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.7);
     top: 30%;
-    left: 10%;
+    left: 20%;
+}
+.co:hover{
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    box-shadow: 2px 2px 2px #000;
+    
 }
 
 .co h1{
@@ -62,9 +69,9 @@
 }
 .card-bhar{
     color: antiquewhite;
-    position: absolute;
-    width: 350px;   
-    padding: 2px 10px;
+    position: relative;
+    /* width: 100%;    */
+    /* padding: 2px 10px; */
     box-sizing: border-box;
     border-radius: 10px;
     background: grey;
@@ -75,4 +82,35 @@
     opacity: 1.5;
     color: purple;
     background: white;
+}
+.ac{
+    color: antiquewhite;
+    position:relative;
+    width: 350px;   
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    top: 30%;
+    left: 55%;
+}
+
+.ac:hover{
+    transform: scale(1.1);
+    background: #ff800a;
+    z-index: 2;
+    box-shadow: 2px 2px 2px #000;
+    
+}
+.con{
+    position: relative;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    transition: 1s;
+}
+.text-center {
+    padding: 20px;
 }

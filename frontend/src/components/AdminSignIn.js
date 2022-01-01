@@ -25,7 +25,7 @@ const AdminSignIn =()=>{
             history.push(fromUrl)
         }
         else{
-            alert("Admin Logged in successfully..!")
+            // alert("Admin Logged in successfully..!")
             history.push('/addTrain')
         }
     }
