@@ -7,6 +7,7 @@ const Train = props=>(
         <td>{props.train.trainName}</td>
         <td>{props.train.startStation}</td>
         <td>{props.train.endStation}</td>
+        <td>{props.train.price}</td>
     </tr>
 );
     
@@ -24,6 +25,7 @@ const Train = props=>(
          .get("http://localhost:9030/search/allTrains")
          .then(response =>{
              this.setState({traintickets: response.data});
+             
          })
          .catch(function(error){
              console.log(error);
@@ -43,8 +45,9 @@ const Train = props=>(
                     <h1>Heyy....!</h1><br/>
                     <h4>TrainList page is under Development</h4>
                 </center> */}
+
                 <center>
-                    <h1 style={{ fontFamily: "Old English Text MT", backgroundColor:'#DADADA '}}><strong>Train Details</strong></h1>
+                    <h1 style={{ fontFamily: "Old English Text MT", marginTop:'10%'}}><strong>Train Details</strong></h1>
                     <table className="table table-striped" >
                         <thead style={{backgroundColor: "#676b6a"}}>
                             <tr >
@@ -52,10 +55,11 @@ const Train = props=>(
                                 <th style={{color:'white'}}>Train Name</th>
                                 <th style={{color:'white'}}>Start Station</th>
                                 <th style={{color:'white'}}>Destination</th>
+                                <th style={{color:'white'}}>Ticket (rs)</th>
                             </tr>
                         </thead>
              
-                        <tbody style={{backgroundColor: "#f2938d"}}>{this.trainList()}</tbody>    
+                        <tbody>{this.trainList()}</tbody>    
                     </table>
                 </center>
             </div>

@@ -1,156 +1,109 @@
 import React, { Component,useContext } from 'react'
 import {UserContext} from '../App'
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
-//import '../src/moduleCSS/header.css'
+
 
 //Importing Images
-
-
+import trainicon from '../../src/resources/trainicon.png'
+import login from '../../src/resources/navLogin.png'
+import logout from '../../src/resources/navLogout.png'
 //Importing Components
-import HomeSlider from './HomeSlider';
-import TrainList from './TrainList';
-import SignUp from './SignUp';
-import TicketBooking from './TicketBooking';
-import PaymentMethod from './PaymentMethod';
-import AdminSignIn from './AdminSignIn';
-import PaytmPG from './PaytmPG';
-
-import SBIBankPG from './SBIBank';
-import ThankYouMessage from './ThankYouMessage';
-import Login from './Login';
+import "../../src/moduleCSS/nav.css"
 import Logout from './logout';
+import navImage from '../../src/resources/navnew3.jpg'
+import nav2 from '../../src/resources/nav2.png'
+import axios from 'axios';
 //import {reducer, initialState} from '../src/reducer.js/UseReducer'
 
 
 
- const NavBar =()=> {
-    const {state,dispatch} = useContext(UserContext)
-    const RenderMenu=()=>{
-        
-        if(state){
-          return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{width:1265, height: 60}}>
-          <div className="collapse navbar-collapse">
-            <ul className= "navbar-nav mr-auto">
-              <li className= "navbar-item">
-                <Link to="/" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic"}}><strong>Home</strong></h4>
-                </Link>
-              </li>
-           
-              <li className= "navbar-item">
-                <Link to="/trainlist" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic"}}><strong>Trains Available</strong></h4>
-                </Link>
-              </li>
-            
-              <li className= "navbar-item">
-                <Link to="/booking" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic"}}><strong>Book Train Tickets</strong></h4>
-                </Link>
-              </li>        
-            
-          {/* <div className="collapse navbar-collapse">
-            <ul className= "navbar-nav mr-auto">
-              <li className= "navbar-item">
-                <Link to="/payment" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic"}}><strong>Payment Here</strong></h4>
-                </Link>
-              </li>
-            </ul>
-          </div> */}
-          
-              <li className= "navbar-item">
-                <Link to="/adminSignIn" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic"}}><strong>Admin</strong></h4>
-                </Link>
-              </li>
-           
-              <li className= "navbar-item">
-                <Link to="/" className="Link" style={{ color: "white" }} onClick={Logout}>
-                  <img src='https://cdn-icons-png.flaticon.com/512/1828/1828445.png' style={{height:50}}/>
-                </Link>
-              </li>
-            </ul>
-          </div>
-         
-          
-         
-          </nav>
-          )
-        }
-        else {
-          return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{width:1265, height: 60}}>
-          <div className="collapse navbar-collapse">
-            <ul className= "navbar-nav mr-auto">
-              <li className= "navbar-item">
-                <Link to="/" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic"}}><strong>Home</strong></h4>
-                </Link>
-              </li>
-           <br/>&nbsp;
-              <li className= "navbar-item">
-                <Link to="/trainlist" className="Link" style={{ color: "white"}}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic",marginLeft:20,marginTop:0 }}><strong>Trains Available</strong></h4>
-                </Link>
-              </li>
-            
-              <li className= "navbar-item">
-                <Link to="/booking" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic",marginLeft:20,marginTop:0 }}><strong>Book Train Tickets</strong></h4>
-                </Link>
-              </li>        
-            
-          {/* <div className="collapse navbar-collapse">
-            <ul className= "navbar-nav mr-auto">
-              <li className= "navbar-item">
-                <Link to="/payment" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic"}}><strong>Payment Here</strong></h4>
-                </Link>
-              </li>
-            </ul>
-          </div> */}
-          
-              <li className= "navbar-item">
-                <Link to="/adminSignIn" className="Link" style={{ color: "white" }}>
-                  <h4 style={{ fontFamily: "Harlow Solid Italic",marginLeft:20,marginTop:0 }}><strong>Admin</strong></h4>
-                </Link>
-              </li>
-              <li className= "navbar-item">
-                <Link to="/login" className="Link" style={{ color: "white" ,marginLeft:20,marginTop:0 }}>
-                  <img src='https://cdn-icons.flaticon.com/png/128/3293/premium/3293473.png?token=exp=1640690016~hmac=ccf58912aa206dd528b7a89d41368969' style={{height:50}}/>
-                </Link>
-                </li>
-              {/* <li className= "navbar-item">
-                <Link to="/" className="Link" style={{ color: "white" }} onClick={Logout}>
-                  <img src='https://cdn-icons-png.flaticon.com/512/1828/1828445.png' style={{height:50}}/>
-                </Link>
-              </li> */}
-            </ul>
-          </div>
-         
-          
-         
-          </nav>
-          
-          )
-        }
-      }
-        return (
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{width:1265, height: 60}}>
-      <div className="collapse navbar-collapse">
-        <ul className= "navbar-nav mr-auto">
-          <RenderMenu/>
-        </ul>
-      </div>
-     
+ class  NavBar extends Component {
+  // state={};
+  // componentDidMount(){
+  //  //axios.get('http://localhost:8682/auth')
+  //  const config={
+  //    headers: {
+  //     Authorization: 'Bearer '+ localStorage.getItem('token'),
+  //     "Access-Control-Allow-Origin": "*",
+  //     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+  //    }
+  //  };
+  //  axios.get('http://localhost:8682/dashboard',config).then(
+  //    res=>{
+  //      this.setState({
+  //        user: res.data
+  //      })
+  //      console.log(res)
+  //    },
+  //    err=>
+  //    {
+  //      console.log(err)
+  //    }
+  //  )
+  // }
+  
+  render(){
+    let button;
+    if(this.props.user){
+      button=(
+      <ul>
+      <li>
+      
+          <a className='active' href='/'>Home</a>
+      </li>&nbsp;
+      <li><a href='/trainlist'>Train List</a></li>
+      <li><a href='/booking'>Book Ticket</a></li>
+      
+      {/* Login */}
+      {/* <li><Link to="/login" className="nav-link" style={{ color: "white" }}>
+            <img src={login} style={{height:50}}/>
+            </Link> 
+      </li>*/}
+     {/* LogOut */}
+     <li><Link to={'/'} className="nav-link" onClick={Logout}><img src={logout} style={{height:50}}/></Link></li>
       
      
-      </nav>
+  </ul>
+  )
+    }
+    else{
+      button= (
+        <ul>
+                <li>
+                
+                    <a className='active' href='/'>Home</a>
+                </li>&nbsp;
+                <li><a href='/trainlist'>Train List</a></li>
+                {/* <li><a href='/booking'>Book Ticket</a></li> */}
+                <li><a href='/adminSignIn'>Admin</a></li>
+                {/* Login */}
+                <li><Link to="/login" className="nav-link" style={{ color: "white" }}>
+                      <img src={login} style={{height:50}}/>
+                      </Link>
+                </li>
+               {/* LogOut */}
+               {/* <li><Link to='/' className="nav-link" onClick={Logout}><img src={logout} style={{height:50}}/></Link></li> */}
+                
+               
+            </ul>
+      )
+    }
+        return (
+         
+     
+    <div className="wrap">
+            <nav>
+              <div className="logo">
+              
+              <h3> <strong> Railway  &nbsp; Reservation &nbsp;  System</strong></h3>
+              </div>
+              {button}
+              
+            </nav>
+      </div>
         )
-    
+      }
 }
 
 export default NavBar

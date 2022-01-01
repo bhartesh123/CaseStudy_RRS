@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.example.demo.model.*;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.JwtUtils;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class AuthController {
 
@@ -104,6 +107,10 @@ public class AuthController {
 	private String dashboard() {
 		return "Welcome to dashboard...!";
 	}
+	@GetMapping("/user")
+	public List<UserModel> getAllContact(){
+        return userrepo.findAll();
+    }
 	
 	
 	

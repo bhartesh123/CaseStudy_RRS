@@ -10,15 +10,17 @@ public class Train {
     private String trainName;
     private String startStation;
     private String endStation;
+    private String price;
 
 
 
-    public Train(String trainId,  String trainName, String startStation, String endStation) {
+    public Train(String trainId,  String trainName, String startStation, String endStation,String price) {
         this.trainId = trainId;
 
         this.trainName = trainName;
         this.startStation = startStation;
         this.endStation = endStation;
+        this.price=price;
     }
 
     public Train() {
@@ -56,4 +58,13 @@ public class Train {
     public void setEndStation(String endStation) {
         this.endStation = endStation;
     }
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+    
 }

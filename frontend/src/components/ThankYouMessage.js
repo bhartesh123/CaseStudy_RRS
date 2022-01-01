@@ -6,6 +6,14 @@ export class ThankYouMessage extends Component {
   render() {
     return (
       <div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
         {/* <h1>Thank You</h1> */}
         <center>
           <img src={thankyou} width="1000"/><br/>
@@ -16,6 +24,10 @@ export class ThankYouMessage extends Component {
             <br/>
           </Link>
         </center>
+        <br/>
+        <br/>
+        <br/>
+        <br/><br/>
       </div>
     );
   }

@@ -19,7 +19,7 @@ public class TrainSecurity extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .authorizeRequests()
                 .antMatchers("/search/**").permitAll()
-                .antMatchers("/trains/**").hasRole("ADMIN")
+                .antMatchers("/trains/**").permitAll()
 
                 .anyRequest()
                 .authenticated()

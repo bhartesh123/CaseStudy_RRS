@@ -1,27 +1,39 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import "../../src/moduleCSS/header.css";
 import nav1 from "../../src/resources/ticket1.jpg";
+import paytm from './paytm';
+import {UserContext} from '../App'
 
 
-
+export const TRAINID="TRAINID";
 export const SOURCE= "SOURCE";
 export const DESTINATION= "DESTINATION";
 export const NOOFTICKETS= "NOOFTICKETS";
+
 class TicketBooking extends Component {
+    
     constructor(props) {
         super(props)
+        this.checktrainId=this.checktrainId.bind(this)
         this.checkSource=this.checkSource.bind(this)
         this.checkDestination=this.checkDestination.bind(this)
         this.checkTickets=this.checkTickets.bind(this)
         this.storeDetails=this.storeDetails.bind(this)
         this.state = {
+            trainId:"",
              source: "",
              destination: "",
              nooftickets: ""
         };
     }
-    
+    checktrainId(e){
+        var tList=document.getElementById("tList").value;
+        this.setState({
+            trainId: e.target.value
+        })
+        console.log("TRAINID: "+tList)
+    }
 
     checkSource(e){
         var soList=document.getElementById("soList").value;
@@ -45,6 +57,7 @@ class TicketBooking extends Component {
         console.log("No. of Tickets: "+tickets);
     }
     storeDetails(e){
+        let trainId=this.state.trainId;
         let source=this.state.source;
         let destination= this.state.destination;
         let nooftickets= this.state.nooftickets;
@@ -56,9 +69,17 @@ class TicketBooking extends Component {
                 
         }
         else {
+            // dispatch({type:"USER", payload: true})
                 alert("You are already logged in you can proceed")
                 // this.props.history.push(`/submitPaymentDetail`);
-        
+        if(trainId===""){
+            alert("Train ID cannot be empty...!")
+            this.props.history.push(`/booking`)
+        }
+        else{
+            sessionStorage.setItem(TRAINID,trainId)
+            this.props.history.push(`/payment`);
+        }
         if(source=== ""){
             alert("SOURCE cannot be empty...!");
             //Redirecting to the same page if Source field is no given
@@ -69,11 +90,11 @@ class TicketBooking extends Component {
         //     //Redirecting to the same page if Source field is no given
         //     this.props.history.push(`/booking`);
         // }
-        else if(source !== ""){
+        else{
             sessionStorage.setItem(SOURCE,source);
             //go to payment component when store method is called
+            //this.props.history.push(`/payment`);
             this.props.history.push(`/payment`);
-
         }
          //Validating the destination and if validated then storing the data to the session storage
          if(destination=== ""){
@@ -82,7 +103,7 @@ class TicketBooking extends Component {
             this.props.history.push(`/booking`);
         }
        
-        else if(destination===source){
+        if(destination===source){
                 alert("Source and Destination both Cannot be Same...!");
                 this.props.history.push(`/booking`);
             }
@@ -99,7 +120,7 @@ class TicketBooking extends Component {
             //Redirecting to the same page if Source field is no given
             this.props.history.push(`/booking`);
         }
-        else if(nooftickets===0){
+        if(nooftickets===0){
             alert("No of Tickets cannot be Empty...!");
             this.props.history.push(`/booking`);
         }
@@ -124,7 +145,7 @@ class TicketBooking extends Component {
 
                 <div style={{'backgroundImage': `url(${nav1}`,width: "100%", height: 600}}>
                     <br/> <br/><br/>
-                    <div className="container" style={{marginTop:0}}>
+                    <div className="container" style={{marginTop:'8%'}}>
                         <center>
                             <div className="card" style={{width: 600}}>
                                 <h2 className="card-header info-color white-text text-center py-4" style={{backgroundColor: "#6BD9D7"}}>
@@ -136,7 +157,7 @@ class TicketBooking extends Component {
                                 <div className='card-body px-lg-5'>
                                     <form className='text-center' style={{color: "#757575"}} onSubmit={this.storeDetails}>
                                         <label>Train ID&nbsp;</label>
-                                        <input type="text"/><br/><br/>
+                                        <input type="text" id='tList' onChange={this.checktrainId}/><br/><br/>
                                         <label>From : &nbsp; </label>
                                         <select class="browser-default custom-select mb-4" id="soList" onChange={this.checkSource}>
                                             <option value="" disabled selected>Choose Option</option>
@@ -145,6 +166,7 @@ class TicketBooking extends Component {
                                             <option value="Miraj">Miraj</option>
                                             <option value="Dadar">Dadar(Mumbai)</option>
                                         </select>
+                                        
                                         <label>&nbsp;To : &nbsp;</label>
                                         <select class="browser-default custom-select mb-4" onFocus="red" id="deList" onChange={this.checkDestination}>
                                         <option value="" disabled selected>Choose Option</option>

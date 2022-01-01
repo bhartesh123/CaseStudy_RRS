@@ -28,3 +28,8 @@ spring:
           uri: lb://train-service
           predicates:
             - Path=/trains/** , /search/**
+            
+        - id: train-service
+          uri: lb://train-service
+          predicates:
+            - Path=/trains/** , /search/**

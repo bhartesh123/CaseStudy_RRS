@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import visologo from "../resources/visalogo.png"
 import masterlogo from "../resources/masterlogo.png"
-import {SOURCE,DESTINATION,NOOFTICKETS} from "./TicketBooking"
+import {SOURCE,DESTINATION,NOOFTICKETS, TRAINID} from "./TicketBooking"
 
 
 export const TOTAL ="TOTAL"
@@ -11,7 +11,7 @@ class PaymentMethod extends Component {
     
         this.state = {
              method: "",
-
+             trainId:"",
              source: "",
              destination: "",
              nooftickets:"",
@@ -21,6 +21,13 @@ class PaymentMethod extends Component {
         this.handleSubmit=this.handleSubmit.bind(this)
     }
     componentDidMount(){
+        this.setState({
+            ...this.state,
+            trainId: sessionStorage.getItem(TRAINID)
+            
+        },()=>console.log(this.state.trainId)
+        
+        )
         this.setState({
             source: sessionStorage.getItem(SOURCE)
         });
@@ -69,7 +76,7 @@ class PaymentMethod extends Component {
                 this.props.history.push(`/submitPaymentDetail`);
             }            
         }
-        if(this.componentDidMount()){
+       
             fetch("http://localhost:9040/booking/addBooking",{
                 "method":"POST",
                 "headers":{
@@ -78,10 +85,10 @@ class PaymentMethod extends Component {
                     "Access-Control-Allow-Origin":"*"
                 },
                 "body": JSON.stringify({
-                    trainid: this.state.trainid,
-                    source: this.state.source,
-                    destination: this.state.destination,
+                    trainId: this.state.trainId,
                     nooftickets: this.state.nooftickets,
+                    source: this.state.source,
+                    destination: this.state.destination  
                 })
             })
             .then(response=>response.json())
@@ -91,7 +98,7 @@ class PaymentMethod extends Component {
             .catch(err=>{
                 alert("Your ticket is Booked")
             });
-        }
+        
     }
     
     render() {
@@ -109,6 +116,13 @@ class PaymentMethod extends Component {
                                 <strong style={{color:"white"}}>
                                     {" "}
                                     Your Details
+                                    <h6>
+                                        {" "}
+                                        Train Id : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                                        <input type="text" value={this.state.trainId}
+                                        readOnly style={{backgroundColor:"#80aaff",height: 30}}/>
+                                        {" "}
+                                    </h6>
                                     <h6>
                                         {" "}
                                         Source : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}

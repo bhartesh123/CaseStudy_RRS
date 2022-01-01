@@ -34,7 +34,7 @@ public class PaymentController {
 	}
 
 	 @PostMapping(value = "/submitPaymentDetail")
-	    public ModelAndView getRedirect(@RequestParam(name = "CUST_ID") String customerId,
+	  public ModelAndView getRedirect(@RequestParam(name = "CUST_ID") String customerId,
 	                                    @RequestParam(name = "TXN_AMOUNT") String transactionAmount,
 	                                    @RequestParam(name = "ORDER_ID") String orderId) throws Exception {
 
