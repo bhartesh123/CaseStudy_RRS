@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import visologo from "../resources/visalogo.png"
 import masterlogo from "../resources/masterlogo.png"
 import {SOURCE,DESTINATION,NOOFTICKETS, TRAINID} from "./TicketBooking"
-
+import GooglePayButton from '@google-pay/button-react'
+import ThankYouMessage from './ThankYouMessage'
+import login from '../../src/resources/user.png'
+import { Link } from 'react-router-dom'
+// import { PaytmButton } from '../paytm-button/paytmButton';
 
 export const TOTAL ="TOTAL"
 class PaymentMethod extends Component {
@@ -102,13 +106,10 @@ class PaymentMethod extends Component {
     }
     
     render() {
-        return (
-            <div style={{backgroundColor:'#D3D3D3'}}>
-                 {/* <center>
-                    <h1>Heyy....!</h1><br/>
-                    <h4>Payment page is under Development</h4>
-                </center> */}
-                <br/><br/><br/><br/><br/><br/>
+      
+            return (
+                <div style={{backgroundColor:'#D3D3D3'}}>
+                    <br/><br/><br/><br/><br/><br/>
                 <div className='container' style={{marginTop: 0}}>
                     <center>
                         <div className='card' style={{width:600}}>
@@ -172,6 +173,10 @@ class PaymentMethod extends Component {
                                             Mobile Number (Payment will be added to the Mobile Bill)
                                         </label>
                                     </div>
+                                   <br/>
+                                    
+                                     <br/>
+                                     {/* <PaytmButton/> */}
                                     <button className='btn btn-outline-primary btn-rounded btn-block z-depth-0 my-4 waves-effect' type="submit">
                                         Confirm Payment Here
                                     </button>
@@ -180,10 +185,10 @@ class PaymentMethod extends Component {
                         </div>
                     </center>
                 </div>
-                <br/><br/>
-            </div>
-        )
-    }
+                </div>
+            )
+            
+        }
 }
 
 export default PaymentMethod

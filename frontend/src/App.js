@@ -77,8 +77,8 @@ class App extends Component {
         <Route path="/" exact component={HomeSlider}/>
         <Route path="/trainlist" exact component={TrainList}/>
         <Route path="/signUp" exact component={SignUp}/>
-        <Route path="/booking" exact component={TicketBooking}/>
-        <Route path="/payment" exact component={PaymentMethod}/>
+        <Route path="/booking" exact component={TicketBooking }/>
+        <Route path="/payment" exact component={PaymentMethod }/>
         <Route path="/adminSignIn" exact component={AdminSignIn}/>
         <Route path="/submitPaymentDetail" exact component={PaytmPG}/>
         <Route path="/sbipg" exact component={SBIBankPG}/>
@@ -86,7 +86,7 @@ class App extends Component {
         <Route path="/login" exact component={LogInCls}/>
         <Route path="/addTrain" exact component={AddTrain}/>
         <Route path="/delTrain" exact component={deleteTrain}/>
-        <Route path="/paytm" exact component={PaymentMethod}/>
+        {/* <Route path="/paytm" exact component={PaymentMethod}/> */}
         
       </Switch> 
 

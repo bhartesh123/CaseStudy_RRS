@@ -16,7 +16,7 @@ export class ThankYouMessage extends Component {
         
         {/* <h1>Thank You</h1> */}
         <center>
-          <img src={thankyou} width="1000"/><br/>
+          <img src={thankyou} width="500"/><br/>
           <Link to="/" style={{backgroundColor: "#6900cb",color:"white"}}>
             {" "}
             Go to Home{" "}

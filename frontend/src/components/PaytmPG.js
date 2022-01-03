@@ -3,6 +3,8 @@ import axios from "axios";
 import paytmlogo from "../resources/paytm.png";
 //import image
 import { TOTAL } from "./PaymentMethod";
+import ThankYouMessage from "./ThankYouMessage";
+import GooglePayButton from '@google-pay/button-react'
 
 class PaytmPG extends Component {
   constructor(props) {
@@ -55,64 +57,61 @@ class PaytmPG extends Component {
     return (
       <div style={{ backgroundColor: "#D3D3D3" }}>
         <br/><br/><br/><br/><br/><br/>
-        <div className="container" style={{ marginTop: 0 }}>
-          <center>
-            <div className="card" style={{ width: 600 }}>
-              <h5
-                className="card-header info-color white-text text-center py-4"
-                style={{ backgroundColor: " #0000FF " }}
-              >
-                <strong style={{ color: "white" }}>
-                  {" "}
-                  <h2> Your Bill : {this.state.total} </h2>
-                </strong>
-              </h5>
-              <div className="logo">
-                <img src={paytmlogo} width="450" height="250" alt="" />
-              </div>
-              
+        <form onSubmit={this.onSubmit}>
+        <center>  <button type="submit" style={{color:'black',background:'black',padding: '2px 2px'}}>
+        <GooglePayButton  
+                                        environment="TEST"
+                                        paymentRequest={{
+                                          apiVersion: 2,
+                                          apiVersionMinor: 0,
+                                          allowedPaymentMethods: [
+                                            {
+                                              type: 'CARD',
+                                              parameters: {
+                                                allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                                                allowedCardNetworks: ['MASTERCARD', 'VISA'],
+                                              },
+                                              tokenizationSpecification: {
+                                                type: 'PAYMENT_GATEWAY',
+                                                parameters: {
+                                                  gateway: 'example',
+                                                  gatewayMerchantId: 'exampleGatewayMerchantId',
+                                                },
+                                              },
+                                            },
+                                          ],
+                                          merchantInfo: {
+                                            merchantId: '12345678901234567890',
+                                            merchantName: 'Demo Merchant',
+                                          },
+                                          transactionInfo: {
+                                            totalPriceStatus: 'FINAL',
+                                            totalPriceLabel: 'Total',
+                                            totalPrice: '612',
+                                            currencyCode: 'INR',
+                                            countryCode: 'IN',
+                                          },
+                                          shippingAddressRequired: true,
+                                            callbackIntents:['PAYMENT_AUTHORIZATION']
+                                        }}
+                                        onLoadPaymentData={paymentRequest => {
+                                            let tot=this.state.total
+                                            paymentRequest=tot
+                                          console.log('load payment data', paymentRequest);
+                                        }}  
+                                        // onLoadPaymentData={paymentRequest=>{
+                                        //     console.log('Success',paymentRequest);
+            
+                                        // }}
+                                        onPaymentAuthorized={paymentData=>{
+                                            console.log('Payment Authorization Success ',paymentData)
+                                            return {transactionState: 'SUCCESS'}
+                                        }}
+                                        existingPaymentMethodRequired='false'
+                                        buttonColor='black'
+                                        buttonType='Buy'
 
-              <h2> Paytm Payment Gateway </h2>
-              <div className="card-body px-lg-5">
-                <form
-                  className="text-center"
-                  style={{ color: "#757575" }}
-                  onSubmit={this.onSubmit}
-                >
-                  <label> Mobile Number : </label>
-                  <input
-                    type="text"
-                    placeholder="Mobile Number"
-                    className="form-control mb-4"
-                    name="mobileno"
-                  />
-                  <label> Four Digit PIN Number : </label>
-                  <input
-                    type="text"
-                    placeholder="Four Digit PIN Number"
-                    className="form-control mb-4"
-                    name="fourdigitpin"
-                  />
-                  <label> Amount : </label>
-                  <input
-                    type="text"
-                    placeholder=""
-                    className="form-control mb-4"
-                    name="amount"
-                    value={this.state.total}
-                    readOnly
-                  />
-                  <button
-                    className="btn btn-outline-primary btn-rounded btn-block z-depth-0 my-4 waves-effect"
-                    type="submit"
-                  >
-                    PAY NOW
-                  </button>
-                </form>
-              </div>
-            </div>
-          </center>
-        </div>
+                                     onSubmit={ThankYouMessage}/></button></center></form>
         <br/><br/>
       </div>
     );
