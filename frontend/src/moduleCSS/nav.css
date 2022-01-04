@@ -50,7 +50,7 @@ nav ul li a{
 }
 nav ul li a:hover{
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 6px;
+    border-radius: 5px;
 }
 nav ul li a.active{
     background: #e2472f;

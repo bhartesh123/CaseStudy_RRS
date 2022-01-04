@@ -20,7 +20,9 @@ class PaytmPG extends Component {
   componentDidMount() {
     this.setState({
       total: sessionStorage.getItem(TOTAL)
-    });
+     
+    },()=>console.log(this.state.total));
+
   }
   onSubmit(e) {
     e.preventDefault();
@@ -54,12 +56,13 @@ class PaytmPG extends Component {
   }
 
   render() {
+    const tot=this.state.total
     return (
       <div style={{ backgroundColor: "#D3D3D3" }}>
         <br/><br/><br/><br/><br/><br/>
-        <form onSubmit={this.onSubmit}>
-        <center>  <button type="submit" style={{color:'black',background:'black',padding: '2px 2px'}}>
+        
         <GooglePayButton  
+        
                                         environment="TEST"
                                         paymentRequest={{
                                           apiVersion: 2,
@@ -87,7 +90,7 @@ class PaytmPG extends Component {
                                           transactionInfo: {
                                             totalPriceStatus: 'FINAL',
                                             totalPriceLabel: 'Total',
-                                            totalPrice: '612',
+                                            totalPrice: '865',
                                             currencyCode: 'INR',
                                             countryCode: 'IN',
                                           },
@@ -95,9 +98,8 @@ class PaytmPG extends Component {
                                             callbackIntents:['PAYMENT_AUTHORIZATION']
                                         }}
                                         onLoadPaymentData={paymentRequest => {
-                                            let tot=this.state.total
-                                            paymentRequest=tot
-                                          console.log('load payment data', paymentRequest);
+                                         console.log('load payment data', paymentRequest);
+                                         this.props.history.push('/thankyou')
                                         }}  
                                         // onLoadPaymentData={paymentRequest=>{
                                         //     console.log('Success',paymentRequest);
@@ -111,7 +113,9 @@ class PaytmPG extends Component {
                                         buttonColor='black'
                                         buttonType='Buy'
 
-                                     onSubmit={ThankYouMessage}/></button></center></form>
+                                     />
+                                     {/* </button>
+                                     </center></form> */}
         <br/><br/>
       </div>
     );

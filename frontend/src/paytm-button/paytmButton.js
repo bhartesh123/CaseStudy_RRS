@@ -108,7 +108,7 @@ export function PaytmButton () {
               "orderId": paymentData.order,
               "token": paymentData.token,
               "tokenType": "TXN_TOKEN",
-              "amount": paymentData.amount /* update amount */
+              "amount": sessionStorage.getItem('TOTAL') /* update amount */
             },
             "payMode": {
               "labels": {},

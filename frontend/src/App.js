@@ -28,6 +28,7 @@ import paytm from './components/paytm';
 import LogInCls from './components/LogInCls';
 import { render } from 'react-dom';
 import deleteTrain from './components/deleteTrain';
+import AlertLogout from './components/AlertLogout';
 // import { PaytmButton } from './paytm-button/paytmButton';
 
 // export const UserContext=createContext()
@@ -72,7 +73,7 @@ class App extends Component {
     
     <NavBar user={this.state.user}/>
     {/* Switchiong Between Components */}
-    
+   
       <Switch>
         <Route path="/" exact component={HomeSlider}/>
         <Route path="/trainlist" exact component={TrainList}/>
@@ -81,7 +82,7 @@ class App extends Component {
         <Route path="/payment" exact component={PaymentMethod }/>
         <Route path="/adminSignIn" exact component={AdminSignIn}/>
         <Route path="/submitPaymentDetail" exact component={PaytmPG}/>
-        <Route path="/sbipg" exact component={SBIBankPG}/>
+        {/* <Route path="/sbipg" exact component={SBIBankPG}/> */}
         <Route path="/thankyou" exact component={ThankYouMessage}/>
         <Route path="/login" exact component={LogInCls}/>
         <Route path="/addTrain" exact component={AddTrain}/>
@@ -89,7 +90,7 @@ class App extends Component {
         {/* <Route path="/paytm" exact component={PaymentMethod}/> */}
         
       </Switch> 
-
+      <AlertLogout/>
       {/* <div className="footer" style={{ 'backgroundImage': `url('https://as1.ftcdn.net/v2/jpg/03/60/98/86/1000_F_360988603_WHuKjgvF4GuqSMtGW2g4X56EYL7Qy5WK.jpg')`, width: 1265, height: 70}}>
         <center>
           {" "}

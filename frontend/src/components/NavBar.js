@@ -96,7 +96,10 @@ import axios from 'axios';
             <nav>
               <div className="logo">
               
-              <h3> <strong> Railway  &nbsp; Reservation &nbsp;  System</strong></h3>
+              <h3>
+                  <img src='https://cdn-icons-png.flaticon.com/128/3267/3267576.png' style={{height:50}}></img> 
+                <strong> Railway  &nbsp; Reservation &nbsp;  System</strong>
+              </h3>
               </div>
               {button}
               

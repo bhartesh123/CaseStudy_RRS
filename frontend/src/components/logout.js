@@ -1,7 +1,8 @@
 import React, { useContext} from 'react'
 import { Redirect } from 'react-router-dom'
 import {UserContext} from '../App'
-
+// import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/alert'
+// import { Box } from '@chakra-ui/react'
 const Logout = () => { // export function from module 
     var session=sessionStorage.getItem('token')
 //    const {state,dispatch} = useContext(UserContext)
@@ -12,6 +13,27 @@ const Logout = () => { // export function from module
         //  dispatch({type:"USER", payload:false})
         sessionStorage.clear();
         // alert("You have been logged Out")
+        // <Box>
+
+        
+        // <Alert
+        //     status='warning'
+        //     variant='subtle'
+        //     flexDirection='column'
+        //     alignItems='center'
+        //     justifyContent='center'
+        //     textAlign='center'
+        //     height='200px'
+        //     >
+        //     <AlertIcon boxSize='40px' mr={0} />
+        //     <AlertTitle mt={4} mb={1} fontSize='lg'>
+        //         Application submitted!
+        //     </AlertTitle>
+        //     <AlertDescription maxWidth='sm'>
+        //         Thanks for submitting your application. Our team will get back to you soon.
+        //     </AlertDescription>
+        // </Alert>
+        // </Box>
         window.location.reload()
        
         

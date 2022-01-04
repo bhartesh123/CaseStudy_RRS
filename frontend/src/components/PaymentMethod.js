@@ -5,10 +5,12 @@ import {SOURCE,DESTINATION,NOOFTICKETS, TRAINID} from "./TicketBooking"
 import GooglePayButton from '@google-pay/button-react'
 import ThankYouMessage from './ThankYouMessage'
 import login from '../../src/resources/user.png'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import "../../src/moduleCSS/payment.css"
 // import { PaytmButton } from '../paytm-button/paytmButton';
 
 export const TOTAL ="TOTAL"
+
 class PaymentMethod extends Component {
     constructor(props) {
         super(props)
@@ -52,34 +54,31 @@ class PaymentMethod extends Component {
         this.setState({
             total:
             sessionStorage.getItem(NOOFTICKETS) * 340 - sessionStorage.getItem(NOOFTICKETS)* 340 * (10 / 100)
+            
         });
+        
     }
 
     handleChange(e){
         this.setState({
             method: e.target.value
         });
-        let total=this.state.total;
-        sessionStorage.setItem(TOTAL, total);
+        let total1=this.state.total;
+        sessionStorage.setItem(TOTAL, total1);
     }
     handleSubmit(e){
-        e.preventDefault();
-        let method = this.state.method;
-        if(method === "creditcard"){
-            this.props.history.push(`/sbipg`);
-        }
-        else if(method === "mobile"){
+        // e.preventDefault();
+        
             var session=sessionStorage.getItem('token')
             if(session===null){
                 alert("You are not logged in please login ")
-                this.props.history.push(`/login`);
-                
+                this.props.history.push(`/login`);               
             }
             else {
-                alert("You are already logged in you can proceed")
-                this.props.history.push(`/submitPaymentDetail`);
+                // alert("You are already logged in you can proceed")
+                // this.props.history.push(`/thankyou`);
             }            
-        }
+        
        
             fetch("http://localhost:9040/booking/addBooking",{
                 "method":"POST",
@@ -97,94 +96,128 @@ class PaymentMethod extends Component {
             })
             .then(response=>response.json())
             .then(response=>{
-                alert("Your ticket is not Booked")
+                alert("Your ticket is Booked")
+                console.log(response)
+                // alert("Your ticket is not Booked")
             })
             .catch(err=>{
-                alert("Your ticket is Booked")
+                alert("Your ticket is  Booked")
+                // console.log(err)
             });
         
     }
+   
     
     render() {
-      
+       
+        const totalAmt=this.state.total;
+        console.log("Total Amount render : ",totalAmt)
+        sessionStorage.setItem(TOTAL,this.state.total)
+        
             return (
-                <div style={{backgroundColor:'#D3D3D3'}}>
-                    <br/><br/><br/><br/><br/><br/>
-                <div className='container' style={{marginTop: 0}}>
-                    <center>
-                        <div className='card' style={{width:600}}>
-                            <h5 className='card-header info-color white-text text-center py-4' 
-                            style={{backgroundColor:"#0000FF"}}>
-                                <strong style={{color:"white"}}>
-                                    {" "}
-                                    Your Details
-                                    <h6>
-                                        {" "}
-                                        Train Id : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                                        <input type="text" value={this.state.trainId}
-                                        readOnly style={{backgroundColor:"#80aaff",height: 30}}/>
-                                        {" "}
-                                    </h6>
-                                    <h6>
-                                        {" "}
-                                        Source : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-                                        <input type="text" value={this.state.source}
-                                        readOnly style={{backgroundColor:"#80aaff",height: 30}}/>
-                                        {" "}
-                                    </h6>
-                                    <h6>
-                                        {" "}
-                                        Destination : {" "}
-                                        <input type="text" value={this.state.destination}
-                                        readOnly 
-                                        style={{backgroundColor: "#80aaff",height: 30}}/>
-                                    </h6>
-                                    <h6>
-                                        {" "}
-                                        No of Tickets : {" "}
-                                        <input type="text" value={this.state.nooftickets}
-                                        readOnly
-                                        style={{backgroundColor:"#80aaff"}}/>
-                                    </h6>
-                                    <h6>
-                                        {" "}
-                                        Your Total Bill :{" "}
-                                        <input type="text" value={this.state.total} readOnly style={{backgroundColor:'#80aaff'}}/>
-                                    </h6>
-                                    Select Payment Method<br/>
-                                </strong>
-                            </h5>
-                            <div className='card-body px-lg-5'>
-                                <form className='text-center' style={{color:'#757575'}} onSubmit={this.handleSubmit}>
-                                    <div className='custom-control custom-radio'>
-                                        <input type="radio" className='custom-control-input' id="creditcard" name='method' value='creditcard' onChange={this.handleChange}/>
-                                        <label className='custom-control-label' for="creditcard">
-                                            Credit Card
-                                            <div>
-                                                
-                                                <img src={visologo} width="50" height="20" alt="" />
-                                                <img src={masterlogo} width="50" height="20" alt="" />
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div className='custom-radio'>
-                                        <input type='radio' className='custom-control-input' id='mobilenum' name='method' value="mobile" onChange={this.handleChange}/>
-                                        <label className='custom-control-label' for="mobilenum">
-                                            Mobile Number (Payment will be added to the Mobile Bill)
-                                        </label>
-                                    </div>
-                                   <br/>
-                                    
-                                     <br/>
-                                     {/* <PaytmButton/> */}
-                                    <button className='btn btn-outline-primary btn-rounded btn-block z-depth-0 my-4 waves-effect' type="submit">
-                                        Confirm Payment Here
-                                    </button>
-                                </form>
+               
+                <div id='wrp'>
+                    <div className='payment'>
+                        <div className='product'>
+                            <div>
+                               <h1>Total Bill</h1>
+                                <div className='price'>
+                               <h5>₹ {this.state.total}</h5>
+                                </div>
                             </div>
                         </div>
-                    </center>
-                </div>
+                        <div className='bill'>
+                            <h2 style={{fontFamily:'Times New Roman'}}><strong>Receipt Summary</strong></h2>
+                            <ul>
+                                <strong>
+                                <li>
+                                    <span>Train Id : </span>
+                                    <span>{this.state.trainId}</span>
+                                </li>
+                                <li>
+                                    <span>Starting Station : </span>
+                                    <span>{this.state.source}</span>
+                                </li>
+                                <li>
+                                    <span>Destination : </span>
+                                    <span>{this.state.destination}</span>
+                                </li>
+                                <li>
+                                    <span>No of Seats : </span>
+                                    <span>{this.state.nooftickets}</span>
+                                </li>
+                                <hr/>
+                                <li>
+                                    <span>Total Amount : </span>
+                                    <span>{this.state.total}</span>
+                                </li>
+                                <hr/>
+                                </strong>
+                            </ul>
+                            <h2>Payment Information</h2>
+                           {/* <form onSubmit={this.handleSubmit}>
+                                    <center>  <button type="submit" style={{background:'black',padding: '2px 2px'}}>  */}
+                                    <GooglePayButton
+                                                    environment="TEST"
+                                                    paymentRequest={{
+                                                    apiVersion: 2,
+                                                    apiVersionMinor: 0,
+                                                    allowedPaymentMethods: [
+                                                        {
+                                                        type: 'CARD',
+                                                        parameters: {
+                                                            allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                                                            allowedCardNetworks: ['MASTERCARD', 'VISA'],
+                                                        },
+                                                        tokenizationSpecification: {
+                                                            type: 'PAYMENT_GATEWAY',
+                                                            parameters: {
+                                                            gateway: 'example',
+                                                            gatewayMerchantId: 'exampleGatewayMerchantId',
+                                                            },
+                                                        },
+                                                        },
+                                                    ],
+                                                    merchantInfo: {
+                                                        merchantId: '12345678901234567890',
+                                                        merchantName: 'Demo Merchant',
+                                                    },
+                                                    transactionInfo: {
+                                                        totalPriceStatus: 'FINAL',
+                                                        totalPriceLabel: 'Total',
+                                                        totalPrice: sessionStorage.getItem('TOTAL'),
+                                                        currencyCode: 'INR',
+                                                        countryCode: 'IN',
+                                                    },
+                                                    shippingAddressRequired: true,
+                                                    callbackIntents: ['SHIPPING_ADDRESS', 'PAYMENT_AUTHORIZATION'],
+                                                    }}
+                                                    onLoadPaymentData={paymentRequest => {
+                                                    console.log('Success', paymentRequest);
+                                                   
+                                                    this.props.history.push('/thankyou')
+                                                    this.handleSubmit()
+                                                    }}
+                                                    onPaymentAuthorized={paymentData => {
+                                                        console.log('Payment Authorised Success', paymentData)
+                                                        return { transactionState: 'SUCCESS'}
+                                                    }
+                                                    }
+                                                    onPaymentDataChanged={paymentData => {
+                                                        console.log('On Payment Data Changed', paymentData)
+                                                        return { }
+                                                    }
+                                                    }
+                                                    existingPaymentMethodRequired='false'
+                                                    
+                                                    
+                                        />
+                                     {/* </button>
+                                     </center>
+                                     </form> */}
+                        </div>
+                    </div>
+
                 </div>
             )
             
