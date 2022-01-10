@@ -71,7 +71,7 @@ class PaymentMethod extends Component {
         
             var session=sessionStorage.getItem('token')
             if(session===null){
-                alert("You are not logged in please login ")
+                alert("Please login first ")
                 this.props.history.push(`/login`);               
             }
             else {
@@ -96,12 +96,12 @@ class PaymentMethod extends Component {
             })
             .then(response=>response.json())
             .then(response=>{
-                alert("Your ticket is Booked")
+                // alert("Your ticket is Booked")
                 console.log(response)
                 // alert("Your ticket is not Booked")
             })
             .catch(err=>{
-                alert("Your ticket is  Booked")
+                // alert("Your ticket is  Booked")
                 // console.log(err)
             });
         
@@ -156,8 +156,8 @@ class PaymentMethod extends Component {
                             </ul>
                             <h2>Payment Information</h2>
                            {/* <form onSubmit={this.handleSubmit}>
-                                    <center>  <button type="submit" style={{background:'black',padding: '2px 2px'}}>  */}
-                                    <GooglePayButton
+                                    <button type="submit" style={{background:'black',padding: '2px 2px'}}>  */}
+                                    <center>  <GooglePayButton
                                                     environment="TEST"
                                                     paymentRequest={{
                                                     apiVersion: 2,
@@ -212,6 +212,7 @@ class PaymentMethod extends Component {
                                                     
                                                     
                                         />
+                                        </center>
                                      {/* </button>
                                      </center>
                                      </form> */}

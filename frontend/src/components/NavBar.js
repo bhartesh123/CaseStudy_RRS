@@ -14,6 +14,7 @@ import Logout from './logout';
 import navImage from '../../src/resources/navnew3.jpg'
 import nav2 from '../../src/resources/nav2.png'
 import axios from 'axios';
+import DialogueLgo from './DialogueLgo';
 //import {reducer, initialState} from '../src/reducer.js/UseReducer'
 
 
@@ -61,8 +62,9 @@ import axios from 'axios';
             </Link> 
       </li>*/}
      {/* LogOut */}
-     <li><Link to={'/'} className="nav-link" onClick={Logout}><img src={logout} style={{height:50}}/></Link></li>
-      
+     <li>
+       <Link to={'/'} className="nav-link" onClick={Logout}><img src={logout} style={{height:50}}/></Link></li>
+    
      
   </ul>
   )

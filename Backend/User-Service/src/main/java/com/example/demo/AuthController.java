@@ -82,7 +82,7 @@ public class AuthController {
 		String password= authreq.getPassword();
 		System.out.println(authreq);
 		
-			authenticates.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+		authenticates.authenticate(new UsernamePasswordAuthenticationToken(email, password));
 				
 		
 		

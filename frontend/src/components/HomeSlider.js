@@ -87,7 +87,7 @@ class HomeSlider extends Component{
             </marquee>
             <center className="ce">
                 <h3 style={{color:"#000066", fontFamily: "Times New Roman"}}><strong>INDIAN RAILWAYS</strong></h3>
-                <h6><strong>As of March 2020, Indian Railways' rolling stock consisted of 2,93,077 freight wagons, 76,608 passenger coaches and 12,729 locomotives.IR owns locomotive and coach-production facilities at several locations in India. It had 1.254 million employees as of March 2020, making it the world's eighth-largest employer. The government has committed to electrifying India's entire rail network by 2023–24, and become a "net zero (carbon emissions) railway" by 2030.</strong></h6> 
+                <h6 style={{backgroundColor:'wheat'}}><strong>As of March 2020, Indian Railways' rolling stock consisted of 2,93,077 freight wagons, 76,608 passenger coaches and 12,729 locomotives.IR owns locomotive and coach-production facilities at several locations in India. It had 1.254 million employees as of March 2020, making it the world's eighth-largest employer. The government has committed to electrifying India's entire rail network by 2023–24, and become a "net zero (carbon emissions) railway" by 2030.</strong></h6> 
                     
                 </center>
         <div className="homs">

@@ -32,7 +32,7 @@ class TicketBooking extends Component {
         this.setState({
             trainId: e.target.value
         })
-        console.log("TRAINID: "+tList)
+        console.log("TRAIN ID: "+tList)
     }
 
     checkSource(e){
@@ -64,16 +64,16 @@ class TicketBooking extends Component {
         //Validating the source and if validated then storing the data to the session storage
         var session=sessionStorage.getItem('token')
         if(session===null){
-                alert("You are not logged in please login ")
+                // alert("You are not logged in please login ")
                 this.props.history.push(`/login`);
                 
         }
         else {
             // dispatch({type:"USER", payload: true})
-                alert("You are already logged in you can proceed")
+                // alert("You are already logged in you can proceed")
                 // this.props.history.push(`/submitPaymentDetail`);
         if(trainId===""){
-            alert("Train ID cannot be empty...!")
+            // alert("Train ID cannot be empty...!")
             this.props.history.push(`/booking`)
         }
         else{
@@ -81,7 +81,7 @@ class TicketBooking extends Component {
             this.props.history.push(`/payment`);
         }
         if(source=== ""){
-            alert("SOURCE cannot be empty...!");
+            // alert("SOURCE cannot be empty...!");
             //Redirecting to the same page if Source field is no given
             this.props.history.push(`/booking`);
         }
@@ -98,13 +98,13 @@ class TicketBooking extends Component {
         }
          //Validating the destination and if validated then storing the data to the session storage
          if(destination=== ""){
-            alert("Destinatoin field cannot be empty...!");
+            // alert("Destinatoin field cannot be empty...!");
             //Redirecting to the same page if Source field is no given
             this.props.history.push(`/booking`);
         }
        
         if(destination===source){
-                alert("Source and Destination both Cannot be Same...!");
+                // alert("Source and Destination both Cannot be Same...!");
                 this.props.history.push(`/booking`);
             }
             
@@ -116,12 +116,12 @@ class TicketBooking extends Component {
         }
         //Validating the No of Tickets and if validated then storing the data to the session storage
         if(nooftickets=== ""){
-            alert("No. of Tickets field cannot be empty...!");
+            // alert("No. of Tickets field cannot be empty...!");
             //Redirecting to the same page if Source field is no given
             this.props.history.push(`/booking`);
         }
         if(nooftickets===0){
-            alert("No of Tickets cannot be Empty...!");
+            // alert("No of Tickets cannot be Empty...!");
             this.props.history.push(`/booking`);
         }
        
@@ -157,8 +157,8 @@ class TicketBooking extends Component {
                                 </h2>
                                 <div className='card-body px-lg-5'>
                                     <form className='text-center' style={{color: "#757575"}} onSubmit={this.storeDetails}>
-                                        <label>Train ID&nbsp;</label>
-                                        <input type="text" id='tList' onChange={this.checktrainId}/><br/><br/>
+                                        {/* <label>Train ID&nbsp;</label> */}
+                                        <input type="text" id='tList' placeholder='Enter Train ID' onChange={this.checktrainId} style={{border:'none',outline:'none',borderBottom:'2px solid purple'}}/><br/><br/>
                                         <label>From : &nbsp; </label>
                                         <select class="browser-default custom-select mb-4" id="soList" onChange={this.checkSource}>
                                             <option value="" disabled selected>Choose Option</option>
@@ -177,10 +177,10 @@ class TicketBooking extends Component {
                                             <option value="Dadar">Dadar(Mumbai)</option>
                                         </select>
                                         {/* <label>No. of Tickets: </label> */}
-                                        <input type="text" placeholder="No.of Tickets (No of Seats)" className='form-control mb-4' id="tickets" onChange={this.checkTickets}>
+                                        <input type="text" placeholder="No.of Tickets (No of Seats)" className='form-control mb-4' id="tickets" onChange={this.checkTickets} style={{border:'none',outline:'none',borderBottom:'2px solid purple'}}>
                                             
                                         </input>
-                                        <button className='btn btn-outline-primary btn-rounded btn-block z-depth-0 my-4 waves-effect' type='submit'>PAY NOW..!</button>
+                                        <button className='btn btn-outline-primary btn-rounded btn-block z-depth-0 my-4 waves-effect' type='submit'>Confirm</button>
                                     </form>
                                 </div>
                             </div>

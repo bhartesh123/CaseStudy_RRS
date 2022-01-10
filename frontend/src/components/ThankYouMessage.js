@@ -5,7 +5,7 @@ import thankyou from "../resources/back7edit.jpg"
 export class ThankYouMessage extends Component {
   render() {
     return (
-      <div>
+      <section className='card'>
         <br/>
         <br/>
         <br/>
@@ -15,20 +15,22 @@ export class ThankYouMessage extends Component {
         <br/>
         
         {/* <h1>Thank You</h1> */}
-        <center>
-          <img src={thankyou} width="500"/><br/>
-          <Link to="/" style={{backgroundColor: "#6900cb",color:"white"}}>
-            {" "}
-            Go to Home{" "}
-            <br/>
-            <br/>
-          </Link>
-        </center>
+        <div class="jumbotron text-center">
+            <h1 class="display-3" style={{fontFamily:'Harlow Solid Italic'}}><strong>Thank You! </strong>for Booking</h1>
+            <h5 class="lead" style={{backgroundColor:'wheat',position:'relative',width:'35%',left:'35%'}}><strong>Please check your email</strong> for Booking Details.</h5>
+            <hr/>
+            <p>
+              Having trouble? <a href="https://www.irctc.co.in/eticketing/contact.jsf">Contact us</a>
+            </p>
+            <p class="lead">
+              <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+            </p>
+        </div>
         <br/>
         <br/>
         <br/>
         <br/><br/>
-      </div>
+      </section>
     );
   }
 }
